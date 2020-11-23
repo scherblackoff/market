@@ -4,32 +4,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "product")
+@Table(name ="category")
 @Data
 @NoArgsConstructor
-public class Product {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
-
     @Column(name = "name")
     private String name;
 
-    @Column(name = "price")
-    private Long price;
+    @OneToMany(mappedBy = "category")
+    List<Product> products;
 
-
-    public Product(Long id, String name, Long price) {
+    public Category(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.price = price;
     }
 }

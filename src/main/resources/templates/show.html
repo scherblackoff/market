@@ -44,6 +44,7 @@
     <tr>
         <td>Id</td>
         <td>Название</td>
+        <td>Категория</td>
         <td>Цена</td>
         <td>Операции</td>
     </tr>
@@ -53,6 +54,7 @@
     <tr th:each="product : ${products}">
         <td th:text="${product.id}"></td>
         <td th:text="${product.name}"></td>
+        <td th:text="${product.category.name}"></td>
         <td th:text="${product.price}"></td>
         <td><a th:href="@{'/products/edit/' + ${product.id}}">&#9998;</a></td>
     </tr>

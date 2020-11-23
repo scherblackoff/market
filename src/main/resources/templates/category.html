@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>market</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="p-3 mb-2 bg-dark text-white">
+    <div class="container">
+        <div th:replace="~{navigation :: navigation(Category)}" />
+
+        <h2>Категории</h2>
+        <table class="table table-striped table-dark">
+            <thead>
+            <tr>
+                <td>Id</td>
+                <td>Название</td>
+                <td>Операции</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.id}"></td>
+                <td th:text="${category.name}"></td>
+                <td><a class="btn btn-outline-warning" th:href="@{'/category/' + ${category.id}}">Просмотреть товары</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
